@@ -20,9 +20,9 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
 
-  'extends': [
+  extends: [
     'plugin:vue/recommended',
     '@vue/airbnb',
-    '@vue/typescript'
-  ]
+    '@vue/typescript',
+  ],
 };
