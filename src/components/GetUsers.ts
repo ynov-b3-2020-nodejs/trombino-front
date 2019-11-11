@@ -1,6 +1,8 @@
-async function getUsers(number) {
-  axios
-    .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-    .then(response => (this.info = response));
-  return {{ info }};
+import axios from 'axios';
+
+async function getUsers(number: Number) {
+  const { data: { info } } = await axios.get(`https://randomuser.me/api/?results=${number}`);
+  return info;
 }
+
+export default { getUsers };
