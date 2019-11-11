@@ -5,12 +5,6 @@ module.exports = {
     node: true,
   },
 
-  extends: [
-    'plugin:vue/essential',
-    '@vue/airbnb',
-    '@vue/typescript',
-  ],
-
   rules: {
     'no-console': 'off',
     'no-debugger': 'off',
