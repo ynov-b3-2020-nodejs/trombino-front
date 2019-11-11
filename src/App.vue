@@ -3,10 +3,12 @@
     <header>
       <MainNav />
     </header>
-    <router-view style="display: flex;
+    <router-view
+      style="display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;"/>
+    margin-top: 50px;"
+    />
   </div>
 </template>
 
