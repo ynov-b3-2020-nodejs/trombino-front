@@ -1,10 +1,10 @@
 <template>
-  <div i="home">
+  <div id="UserProfle">
     <img
       alt="Vue logo"
       src="../assets/logo.png"
     >
-    <h1>A simple trombinoscope in VueJS</h1>
+
   </div>
 </template>
 
@@ -12,11 +12,6 @@
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
+  name: 'UserProfle',
 };
 </script>
-
-
-<style scoped lang="scss">
-
-</style>
