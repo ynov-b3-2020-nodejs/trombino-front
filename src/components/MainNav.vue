@@ -1,20 +1,20 @@
 <template>
   <nav id="main-nav">
-      <ul>
-        <li>
-          <router-link to="/">
+    <ul>
+      <li>
+        <router-link to="/">
           Home
         </router-link>
       </li>
       <li><span> | </span></li>
       <li>
-          <router-link to="/users">
+        <router-link to="/users">
           Display all users
         </router-link>
       </li>
       <li><span> | </span></li>
       <li>
-          <router-link to="/user/">
+        <router-link to="/user/">
           Display user profile
         </router-link>
       </li>
@@ -23,8 +23,9 @@
 </template>
 <script lang="ts">
 import Vue from 'vue';
+
 export default Vue.extend({
-    name: 'MainNav',
+  name: 'MainNav',
 });
 </script>
 <style scoped lang="scss">
