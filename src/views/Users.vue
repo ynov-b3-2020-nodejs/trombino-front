@@ -3,9 +3,16 @@
     <el-button
       type="primary"
       plain
-      @click="fetchUsers"
+      @click="fetchUsers()"
     >
       Fetch
+    </el-button>
+    <el-button
+      type="primary"
+      plain
+      @click="fetchUsers(true)"
+    >
+      Rebase
     </el-button>
     <el-radio-group v-model="gender">
       <el-radio-button
@@ -116,8 +123,8 @@ export default {
     },
   },
   methods: {
-    async fetchUsers() {
-      this.users = await getUsers(true);
+    async fetchUsers(forceFetch = false) {
+      this.users = await getUsers(forceFetch);
     },
     buttonAgeState() {
       switch (this.sortAge) {
