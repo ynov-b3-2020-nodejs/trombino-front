@@ -11,7 +11,7 @@
 // @ is an alias to /src
 
 export default {
-  name: 'UserProfle',
+  name: 'UserProfile',
   data() {
     return {
       user: {
