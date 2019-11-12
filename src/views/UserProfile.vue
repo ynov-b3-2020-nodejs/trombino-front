@@ -1,24 +1,33 @@
 <template>
-  <div id="UserProfle">
+  <div
+    v-if="userProfile"
+    id="UserProfle"
+  >
     <img
-      alt="Vue logo"
-      src="user.pictureUrl"
+      alt="avatar"
+      :src="userProfile.picture.large"
     >
 
-    <p>Hi {{ this.$route.params.id }} !</p>
-
-    <div
-      v-for="user in userProfile"
-      :key="user.id.value"
-    >
-      <p>{{ user.name.first }}</p>
+    <div>
+      <p>{{ userProfile.name.first }}</p>
+      <p>{{ userProfile.name.last }} </p>
     </div>
+    <p>{{ userProfile.email }} </p>
+    <p>{{ userProfile.cell }} </p>
+    <p>{{ userProfile.dob.age }} ans</p>
+
+    <router-link
+      class="el-button el-button--primary is-circle"
+      :to="{name: 'userProfileEdit', params: $route.params}"
+    >
+      <i class="el-icon-edit" />
+    </router-link>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import GetUsers from '@/components/GetUsers';
+import { getUsers } from '@/components/GetUsers';
 
 export default {
   name: 'UserProfile',
@@ -36,8 +45,7 @@ export default {
     },
   },
   async beforeMount() {
-    const res = await GetUsers.getUsers(20);
-    this.users = res.data.results;
+    this.users = await getUsers();
   },
 };
 </script>
