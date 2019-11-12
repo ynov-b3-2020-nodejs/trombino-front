@@ -9,7 +9,7 @@ module.exports = {
     'no-console': 'off',
     'no-debugger': 'off',
     'max-len': 0,
-
+    'import/prefer-default-export': 'off',
   },
 
   parserOptions: {
