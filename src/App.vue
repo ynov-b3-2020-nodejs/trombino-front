@@ -2,7 +2,6 @@
   <div id="app">
     <header>
       <MainNav />
-      <AuthForm />
     </header>
     <router-view
       style="display: flex;
