@@ -50,7 +50,7 @@
         <tbody>
           <tr
             v-for="user in filterMembers"
-            :key="user.id.value"
+            :key="user.login.uuid"
           >
             <th>
               <img
@@ -62,10 +62,12 @@
             <th>{{ user.phone }}</th>
             <th>{{ user.dob.age }}</th>
             <th>
-              <router-link :to="{name: 'UserProfileId', params: { id: user.login.uuid }}">
-                <el-link>
-                  afficher détails
-                </el-link>
+              <router-link
+                class="el-button el-button--primary"
+                :to="{name: 'UserProfileId', params: { id: user.login.uuid }}"
+                style="text-decoration: none"
+              >
+                afficher détails
               </router-link>
             </th>
           </tr>
@@ -77,7 +79,7 @@
 
 
 <script>
-import GetUsers from '@/components/GetUsers';
+import { getUsers } from '@/components/GetUsers';
 
 export default {
   name: 'Users',
@@ -89,7 +91,6 @@ export default {
     };
   },
   component: {
-    GetUsers,
   },
   computed: {
     filterMembers() {
@@ -116,8 +117,7 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      const res = await GetUsers.getUsers(true);
-      this.users = res.data.results;
+      this.users = await getUsers(true);
     },
     buttonAgeState() {
       switch (this.sortAge) {

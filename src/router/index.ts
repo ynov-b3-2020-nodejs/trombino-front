@@ -25,6 +25,10 @@ const routes = [
     name: 'UserProfileId',
     component: () => import(/* webpackChunkName: "UserProfile" */ '../views/UserProfile.vue'),
   },
+  {
+    path: 'user/:id/edit',
+    name: 'UserProfileEdit',
+  },
 ];
 
 const router = new VueRouter({
