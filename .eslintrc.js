@@ -21,10 +21,4 @@ module.exports = {
     '@vue/airbnb',
     '@vue/typescript',
   ],
-
-  'extends': [
-    'plugin:vue/recommended',
-    '@vue/airbnb',
-    '@vue/typescript'
-  ]
 };
