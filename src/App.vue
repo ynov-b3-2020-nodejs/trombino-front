@@ -15,13 +15,11 @@
 
 <script>
 import MainNav from './components/MainNav.vue';
-import AuthForm from './components/AuthForm.vue';
 
 export default {
   name: 'App',
   components: {
     MainNav,
-    AuthForm,
   },
 };
 </script>

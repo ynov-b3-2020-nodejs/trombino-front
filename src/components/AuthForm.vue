@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import GetUsers from '@/components/GetUsers';
+import { getUsers } from '@/components/GetUsers';
 
 export default {
   name: 'AuthForm',
@@ -31,10 +31,13 @@ export default {
     };
   },
   methods: {
-    verify() {
+    async verify() {
       if (this.email !== '' && this.pass !== '') {
-        const users = GetUsers.getUsers();
+        const users = await getUsers();
         const user = users.find(element => element.email === this.email);
+        if (user.login.password === this.pass) {
+          await this.$router.push({ path: `user/${user.login.uuid}/edit` });
+        }
       } else {
         console.error('error 400, mail or password empty');
       }
