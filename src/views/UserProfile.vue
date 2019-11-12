@@ -18,7 +18,7 @@
 
     <router-link
       class="el-button el-button--primary is-circle"
-      :to="{name: 'userProfileEdit', params: $route.params}"
+      :to="{name: 'UserProfileEdit', params: $route.params}"
     >
       <i class="el-icon-edit" />
     </router-link>
@@ -35,9 +35,6 @@ export default {
     return {
       users: [],
     };
-  },
-  component: {
-    GetUsers,
   },
   computed: {
     userProfile() {
