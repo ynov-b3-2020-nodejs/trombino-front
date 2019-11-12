@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      const res = await GetUsers.getUsers(20);
+      const res = await GetUsers.getUsers(true);
       this.users = res.data.results;
     },
     buttonAgeState() {

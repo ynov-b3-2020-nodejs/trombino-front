@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-async function getUsers(number: Number) {
-  return axios.get(`https://randomuser.me/api/?results=${number}`);
+let res = {};
+async function getUsers(fetch = false, number = 20) {
+  if (fetch) {
+    res = axios.get(`https://randomuser.me/api/?results=${number}`);
+  }
+  return res;
 }
 
 export default { getUsers };
