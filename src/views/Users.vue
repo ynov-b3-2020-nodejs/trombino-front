@@ -5,32 +5,30 @@
       plain
       @click="fetchUsers"
     >
-      Primary
+      Fetch
     </el-button>
-    <el-row>
-      <el-button
-        v-model="gender"
-        value="male"
-        icon="el-icon-male"
-        round
-      />
-      <el-button
-        v-model="gender"
-        value="female"
-        icon="el-icon-female"
-        round
-      />
-      <el-button
-        v-model="gender"
-        value="*"
-        icon="el-icon-sunny"
-        round
-      />
-    </el-row>
+    <el-radio-group v-model="gender">
+      <el-radio-button
+        label="male"
+      >
+        <fa-icon :icon="['fas', 'mars']" />
+      </el-radio-button>
+      <el-radio-button
+        label="female"
+      >
+        <fa-icon :icon="['fas', 'venus']" />
+      </el-radio-button>
+      <el-radio-button
+        label="*"
+      >
+        <fa-icon :icon="['fas', 'venus-mars']" />
+      </el-radio-button>
+    </el-radio-group>
     <div>
       <table>
         <thead>
           <tr>
+            <th />
             <th>Nom</th>
             <th>Email</th>
             <th>Tel</th>
@@ -46,23 +44,30 @@
                 >Age</i>
               </button>
             </th>
+            <th>details</th>
           </tr>
         </thead>
         <tbody>
           <tr
             v-for="user in filterMembers"
-            :key="user"
+            :key="user.id.value"
           >
             <th>
               <img
                 :src="user.picture.thumbnail"
-                alt=""
               >
             </th>
             <th>{{ user.name.first }} {{ user.name.last }}</th>
             <th>{{ user.email }}</th>
             <th>{{ user.phone }}</th>
             <th>{{ user.dob.age }}</th>
+            <th>
+              <router-link :to="{name: 'UserProfileId', params: { id: user.login.uuid }}">
+                <el-link>
+                  afficher détails
+                </el-link>
+              </router-link>
+            </th>
           </tr>
         </tbody>
       </table>
@@ -76,9 +81,13 @@ import GetUsers from '@/components/GetUsers';
 
 export default {
   name: 'Users',
-  users: [],
-  gender: '*',
-  sortAge: 0,
+  data() {
+    return {
+      users: [],
+      gender: '*',
+      sortAge: 0,
+    };
+  },
   component: {
     GetUsers,
   },
@@ -107,7 +116,8 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      this.users = GetUsers.getUsers(20);
+      const res = await GetUsers.getUsers(20);
+      this.users = res.data.results;
     },
     buttonAgeState() {
       switch (this.sortAge) {
