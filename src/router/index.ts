@@ -11,7 +11,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/users',
+    path: '/users/',
     name: 'Users',
     component: () => import(/* webpackChunkName: "Users" */ '../views/Users.vue'),
   },
@@ -21,12 +21,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "UserProfile" */ '../views/UserProfile.vue'),
   },
   {
-    path: '/user/:id',
+    path: '/user/:id/',
     name: 'UserProfileId',
     component: () => import(/* webpackChunkName: "UserProfile" */ '../views/UserProfile.vue'),
   },
   {
-    path: 'user/:id/edit',
+    path: '/user/:id/edit/',
     name: 'UserProfileEdit',
   },
 ];

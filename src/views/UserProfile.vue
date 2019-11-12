@@ -36,9 +36,6 @@ export default {
       users: [],
     };
   },
-  component: {
-    GetUsers,
-  },
   computed: {
     userProfile() {
       return this.users.find(userObj => userObj.login.uuid === this.$route.params.id);

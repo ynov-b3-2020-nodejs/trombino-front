@@ -56,8 +56,9 @@ type User = {
 
 let users: User[] = [];
 
+
 export async function getUsers(fetch = false, number = 20) {
-  if (fetch) {
+  if (users.length === 0 || fetch) {
     users = (await axios.get(`https://randomuser.me/api/?results=${number}`)).data.results;
   }
 
