@@ -28,9 +28,14 @@
 <script>
 // @ is an alias to /src
 import { getUsers } from '@/components/GetUsers';
+import Search from '../components/Search.vue';
 
 export default {
   name: 'UserProfile',
+  components: { Search },
+  component: {
+    Search,
+  },
   data() {
     return {
       users: [],
