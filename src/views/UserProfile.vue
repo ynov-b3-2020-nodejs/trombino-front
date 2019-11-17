@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="userProfile"
+    v-if="users.lenth != 0"
     id="UserProfle"
   >
     <img
@@ -8,41 +8,36 @@
       :src="userProfile.picture.large"
     >
 
-    <div>
-      <p>{{ userProfile.name.first }}</p>
-      <p>{{ userProfile.name.last }} </p>
-    </div>
-    <p>{{ userProfile.email }} </p>
-    <p>{{ userProfile.cell }} </p>
-    <p>{{ userProfile.dob.age }} ans</p>
-
-    <router-link
-      class="el-button el-button--primary is-circle"
-      :to="{name: 'UserProfileEdit', params: $route.params}"
-    >
-      <i class="el-icon-edit" />
-    </router-link>
+    <EditableText @newValue="userProfile.name.first = $event" :value="userProfile.name.first"/>
+    <EditableText @newValue="userProfile.name.last = $event" :value="userProfile.name.last"/>
+    <EditableText @newValue="userProfile.email = $event" :value="userProfile.email"/>
+    <EditableText @newValue="userProfile.cell = $event" :value="userProfile.cell"/>
+    <EditableNumber @newValue="userProfile.dob.age = $event" :value="userProfile.dob.age"/>
+    
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import { getUsers } from '@/components/GetUsers';
+import EditableText from '@/components/EditableText';
+import EditableNumber from '@/components/EditableNumber';
 
 export default {
   name: 'UserProfile',
+  components: {
+    EditableText,
+    EditableNumber,
+  },
   data() {
     return {
       users: [],
+      userProfile: {},
     };
-  },
-  computed: {
-    userProfile() {
-      return this.users.find(userObj => userObj.login.uuid === this.$route.params.id);
-    },
   },
   async beforeMount() {
     this.users = await getUsers();
+    this.userProfile = this.users.find(userObj => userObj.login.uuid === this.$route.params.id);
   },
 };
 </script>
